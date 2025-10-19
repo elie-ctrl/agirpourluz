@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionnaire - Mon Site</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <img src="logo.png" alt="Logo du site" class="logo">
+  </header>
+
+  <main>
+    <h1>Questionnaire</h1>
+    <form id="questionnaireForm">
+      <label for="nom">1. Quel est votre prénom ?</label><br>
+      <input type="text" id="nom" name="nom" required><br><br>
+
+      <label>2. Quelle est votre couleur préférée ?</label><br>
+      <input type="radio" id="rouge" name="couleur" value="Rouge" required>
+      <label for="rouge">Rouge</label><br>
+      <input type="radio" id="bleu" name="couleur" value="Bleu">
+      <label for="bleu">Bleu</label><br>
+      <input type="radio" id="vert" name="couleur" value="Vert">
+      <label for="vert">Vert</label><br><br>
+
+      <label>3. Quels sont vos loisirs préférés ?</label><br>
+      <input type="checkbox" id="lecture" name="loisirs" value="Lecture">
+      <label for="lecture">Lecture</label><br>
+      <input type="checkbox" id="sport" name="loisirs" value="Sport">
+      <label for="sport">Sport</label><br>
+      <input type="checkbox" id="musique" name="loisirs" value="Musique">
+      <label for="musique">Musique</label><br><br>
+
+      <button type="submit" class="btn">Envoyer</button>
+    </form>
+
+    <p id="merciMessage" style="display:none; color:green;">Merci pour vos réponses !</p>
+    <p id="erreurMessage" style="display:none; color:red;"></p>
+  </main>
+</div>
+
+<script>
+const form = document.getElementById('questionnaireForm');
+const message = document.getElementById('merciMessage');
+const erreurMessage = document.getElementById('erreurMessage');
+
+// Remplacez cette URL par l'URL de votre Apps Script déployé en Web App
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzR28wiTpnRRGpo7SiTLXvqN1hB3vkOYe2Ge5NLXvH8bscDkuTcIZFe4PtNPu2ZRh0/exec";
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const reponses = {
+    nom: document.getElementById('nom').value.trim(),
+    couleur: document.querySelector('input[name="couleur"]:checked')?.value || "",
+    loisirs: Array.from(document.querySelectorAll('input[name="loisirs"]:checked')).map(el => el.value)
+  };
+
+  console.log("Réponses à envoyer :", reponses);
+
+  if (!reponses.nom || !reponses.couleur) {
+    erreurMessage.textContent = "Veuillez remplir toutes les questions obligatoires.";
+    erreurMessage.style.display = "block";
+    return;
+  }
+
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    body: JSON.stringify(reponses)
+  })
+  .then(response => {
+    if (!response.ok) throw new Error("Problème de communication avec le script.");
+    return response.json();
+  })
+  .then(data => {
+    console.log("Réponse du script :", data);
+    if (data.status === "success") {
+      form.style.display = 'none';
+      message.style.display = 'block';
+      erreurMessage.style.display = 'none';
+      form.reset();
+    } else {
+      erreurMessage.textContent = "Erreur : le script n'a pas renvoyé 'success'.";
+      erreurMessage.style.display = 'block';
+    }
+  })
+  .catch(error => {
+    console.error("Erreur fetch :", error);
+    erreurMessage.textContent = "Erreur lors de l'envoi des réponses. Vérifiez l'URL de votre script et vos permissions.";
+    erreurMessage.style.display = 'block';
+  });
+});
+</script>
+
+</body>
+</html>
