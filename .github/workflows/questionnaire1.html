@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionnaire</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Questionnaire</h1>
+
+    <!-- Étape 1 -->
+    <div class="page active" id="page1">
+      <h2>1. Quelle est votre tranche d’âge ?</h2>
+      <label><input type="radio" name="age" value="moins de 18 ans"> Moins de 18 ans</label><br>
+      <label><input type="radio" name="age" value="18-30 ans"> 18–30 ans</label><br>
+      <label><input type="radio" name="age" value="31-50 ans"> 31–50 ans</label><br>
+      <label><input type="radio" name="age" value="plus de 50 ans"> Plus de 50 ans</label><br>
+      <button class="next">Suivant</button>
+    </div>
+
+    <!-- Étape 2 -->
+    <div class="page" id="page2">
+      <h2>2. Quel est votre niveau de satisfaction actuel ?</h2>
+      <label><input type="radio" name="satisfaction" value="Très satisfait"> Très satisfait</label><br>
+      <label><input type="radio" name="satisfaction" value="Satisfait"> Satisfait</label><br>
+      <label><input type="radio" name="satisfaction" value="Peu satisfait"> Peu satisfait</label><br>
+      <label><input type="radio" name="satisfaction" value="Pas du tout satisfait"> Pas du tout satisfait</label><br>
+      <button class="prev">Précédent</button>
+      <button class="next">Suivant</button>
+    </div>
+
+    <!-- Étape 3 -->
+    <div class="page" id="page3">
+      <h2>3. Quelle fonctionnalité utilisez-vous le plus ?</h2>
+      <label><input type="radio" name="fonction" value="Recherche"> Recherche</label><br>
+      <label><input type="radio" name="fonction" value="Profil utilisateur"> Profil utilisateur</label><br>
+      <label><input type="radio" name="fonction" value="Messagerie"> Messagerie</label><br>
+      <label><input type="radio" name="fonction" value="Paramètres"> Paramètres</label><br>
+      <button class="prev">Précédent</button>
+      <button id="submit">Terminer</button>
+    </div>
+
+    <!-- Résultats -->
+    <div class="page" id="resultats">
+      <h2>Merci pour vos réponses !</h2>
+      <div id="summary"></div>
+      <button id="restart">Recommencer</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+/* --- Style global --- */
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* --- Conteneur principal --- */
+.container {
+  text-align: center;
+  max-width: 600px;
+  padding: 20px;
+}
+
+/* --- Logo --- */
+.logo {
+  width: 150px;
+  max-width: 60%;
+  height: auto;
+  display: block;
+  margin: 0 auto 30px auto;
+}
+
+/* --- Texte d'introduction --- */
+.intro {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+/* --- Bouton --- */
+.btn {
+  display: inline-block;
+  background-color: #0078ff;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #005fcc;
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  .intro {
+    font-size: 1rem;
+  }
+
+  .logo {
+    width: 120px;
+  }
+}
