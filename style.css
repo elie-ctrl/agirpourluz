@@ -193,3 +193,20 @@ footer {
     font-size: 15px;
   }
 }
+
+/* ===================================
+   📱 Correction spéciale pour Google Forms sur mobile
+=================================== */
+
+@media (max-width: 700px) {
+  .iframe-wrapper {
+    padding-bottom: 220% !important; /* plus de hauteur pour tout voir */
+  }
+
+  .iframe-wrapper iframe {
+    transform: scale(1.2);
+    transform-origin: top center;
+    width: 125%;
+    margin-left: -12.5%;
+  }
+}
