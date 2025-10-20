@@ -7,21 +7,33 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- 🔹 En-tête -->
   <header>
     <img src="images/logo.png" alt="Logo du site" class="logo">
   </header>
 
+  <!-- 🔹 Contenu principal -->
   <main>
     <h1>Questionnaire</h1>
 
-    <section class="formulaire">
-      <!-- Colle ici le code d'intégration du Google Form -->
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfx40aJMLLoKeKsitDeMyx9fL3DQoFyumM5ihIkGKW_-W75dw/viewform?embedded=true" width="640" height="1283" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>
-    </section>
+<section class="formulaire">
+  <div class="iframe-wrapper">
+    <iframe 
+      src="https://docs.google.com/forms/d/e/1FAIpQLSfx40aJMLLoKeKsitDeMyx9fL3DQoFyumM5ihIkGKW_-W75dw/viewform?embedded=true" 
+      allowfullscreen
+      loading="lazy">
+      Chargement…
+    </iframe>
+  </div>
+</section>
 
-    <a href="index.html" class="btn retour">Retour à l'accueil</a>
+
+    <div style="margin-top: 30px;">
+      <a href="index.html" class="btn retour">Retour à l'accueil</a>
+    </div>
   </main>
 
+  <!-- 🔹 Pied de page -->
   <footer>
     <p>&copy; 2025 Mon Site Web</p>
   </footer>
